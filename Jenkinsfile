@@ -43,7 +43,7 @@ pipeline {
 
                 // multiple charms? don't know number of variables to create
                 echo 'Creating tar gz file'
-                sh './devops/descriptor-packages/tools/generate_descriptor_pkg.sh -t vnfd -N vnf/$nameVNFD'
+                sh './devops/descriptor-packages/tools/generate_descriptor_pkg.sh -t vnfd -N vnf'
             }
         }
 
