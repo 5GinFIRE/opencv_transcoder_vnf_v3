@@ -39,8 +39,7 @@ pipeline {
                 echo 'Copying yaml'
                 sh 'mv opencv_transcoder_test_vnfd/opencv_transcoder_test_vnfd.yaml opencv_transcoder_vnfd/opencv_transcoder_vnfd.yaml'
                 */
-                sh 'mkdir vnf/opencv_transcoder_vnfd/charms'
-                sh 'cp -R charms/$charm vnf/$nameVNFD/charms'
+                sh 'cp -R charms/$charm vnf/charms'
 
                 // multiple charms? don't know number of variables to create
                 echo 'Creating tar gz file'
