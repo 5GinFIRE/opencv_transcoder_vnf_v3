@@ -1,0 +1,67 @@
+vnfd:vnfd-catalog:
+  vnfd:
+    - id: opencv_transcoder_vnf
+      name: OpenCV Transcoder VNF
+      short-name: OpenCV VNF
+      description: OpenCV Transcoder VNF
+      logo: 5GinFIRE.png
+      vendor: 5GinFIRE
+      version: '1.2'
+      connection-point:
+        - id: mgmt_cp
+          name: mgmt_cp
+          short-name: mgmt_cp
+          type: VPORT
+        - id: data_cp
+          name: data_cp
+          short-name: data_cp
+          type: VPORT
+      mgmt-interface:
+        cp: mgmt_cp
+      vdu:
+        - id: transcoder_vdu
+          name: OpenCV Transcoder VDU
+          image: opencv_transcoder_image
+          count: 1
+          cloud-init-file: cloud_init.cfg
+          vm-flavor:
+            vcpu-count: 2
+            memory-mb: 2048
+            storage-gb: 5
+          interface:
+            - name: transcoder_vdu_eth0
+              position: 1
+              type: EXTERNAL
+              virtual-interface:
+                type: VIRTIO
+              external-connection-point-ref: mgmt_cp
+            - name: transcoder_vdu_eth1
+              position: 2
+              type: EXTERNAL
+              virtual-interface:
+                type: VIRTIO
+              external-connection-point-ref: data_cp
+      vnf-configuration:
+        initial-config-primitive:
+          - seq: '1'
+            name: config
+            parameter:
+              - name: ssh-hostname
+                value: <rw_mgmt_ip>
+              - name: ssh-username
+                value: ubuntu
+              - name: ssh-password
+                value: 5ginfire
+        config-primitive:
+          - name: start-transcoder
+            parameter:
+              - name: stream-ip
+                data-type: STRING
+                mandatory: true
+                default: ""
+              - name: output-port
+                data-type: STRING
+                mandatory: true
+                default: ""
+        juju:
+          charm: opencv

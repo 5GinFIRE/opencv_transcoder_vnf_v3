@@ -1,0 +1,16 @@
+"name": "opencv"
+"summary": "OpenCV Transcoder VNF Proxy Charm"
+"maintainer": "Eduardo Sousa <eduardosousa@av.it.pt>"
+"description": |
+  VNF "proxy" charms are a lightweight version of a charm that, rather than
+  installing software on the same machine, execute commands over an ssh channel.
+"tags":
+  # Replace "misc" with one or more whitelisted tags from this list:
+  # https://jujucharms.com/docs/stable/authors-charm-metadata
+  - "misc"
+  - "osm"
+  - "vnf"
+"series":
+- "xenial"
+- "trusty"
+"subordinate": !!bool "false"
