@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
        string(defaultValue: 'opencv_transcoder_vnfd', description: 'name of the vnf', name: 'nameVNFD')
-       string(defaultValue: 'transcoder', description: 'name of the charm', name: 'charm')
+       string(defaultValue: 'opencv', description: 'name of the charm', name: 'charm')
    }
 
     stages {
