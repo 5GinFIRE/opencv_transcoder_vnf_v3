@@ -58,10 +58,8 @@ vnfd:vnfd-catalog:
               - name: stream-ip
                 data-type: STRING
                 mandatory: true
-                default: ""
               - name: output-port
                 data-type: STRING
                 mandatory: true
-                default: ""
         juju:
           charm: opencv
